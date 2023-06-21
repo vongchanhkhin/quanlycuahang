@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Store.belongsTo(models.User, { foreignKey: "owner_id" });
+      Store.belongsTo(models.User, {
+        foreignKey: "owner_id",
+        targetKey: "id",
+        as: "ownerData",
+      });
       Store.hasMany(models.Contract, { foreignKey: "store_id" });
       Store.hasMany(models.WordRequest, { foreignKey: "store_id" });
     }

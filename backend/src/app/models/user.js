@@ -13,32 +13,40 @@ module.exports = (sequelize, DataTypes) => {
 
       // Quan hệ 1-1 với bảng Contracts
       User.hasOne(models.Contract, {
-        foreignKey: "freelancer_id"
+        foreignKey: "freelancer_id",
       });
 
       // Quan hệ 1-n với bảng WordRequests
       User.hasMany(models.WordRequest, {
-        foreignKey: "freelancer_id"
+        foreignKey: "freelancer_id",
       });
     }
+
+    // Khai báo phương thức getStores
+    // getStores() {
+    //   return this.hasMany(this.sequelize.models.Store, {
+    //     foreignKey: "owner_id",
+    //     as: "stores",
+    //   });
+    // }
   }
   User.init(
     {
       full_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       phone_number: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       date_of_birth: DataTypes.DATE,
       gender: DataTypes.STRING,
@@ -46,16 +54,16 @@ module.exports = (sequelize, DataTypes) => {
       address: DataTypes.STRING,
       role: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       is_verify: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
       },
       unique_identifier: {
         type: DataTypes.STRING,
-        unique: true
-      }
+        unique: true,
+      },
     },
     {
       sequelize,
